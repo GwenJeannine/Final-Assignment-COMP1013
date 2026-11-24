@@ -146,7 +146,7 @@ barplot(stateData$percent, names.arg = stateData$customer_state, col = 4, las = 
 ```
 
 ### Findings.
-
+About 97% of the orders were delivered, 2.98% were not, the status are mostly "shipped", "canceled" and "unavailable". And here we can see there's a high rate with 10.87% on a small state like RR with 5 not delivered out of 46 which is biased by the small sample size, therefore it should not be trusted.
 
 \newpage
 
