@@ -200,3 +200,7 @@ Credit card is used very often for about 74% of payments, followed by boleto wit
 \newpage
 
 # Appendix: Git repository and commit log
+
+```{r}
+cat("Repository Link: https://github.com/GwenJeannine/Final-Assignment-COMP1013.git")
+```
