@@ -36,8 +36,51 @@ A few of the prices were a very expensive items therefore I use the log scale fo
 ### Question 1
 * Visualize the distribution of item prices in order_items.csv with a histogram, and report the mean and median price.
 
+```{r, warning = FALSE, message = FALSE}
+library(tidyverse)
+library(ggplot2)
+
+orderItems = read.csv("order_items.csv")
+products = read.csv("products.csv")
+orders = read.csv("orders.csv")
+customers = read.csv("customers.csv")
+payments = read.csv("payments.csv")
+
+```
+
+```{r}
+meanPrice = mean(orderItems$price)
+medianPrice = median(orderItems$price)
+cat("Mean:", round(meanPrice, 2), " Median:", round(medianPrice, 2))
+```
+```{r}
+priceHist = ggplot(data = orderItems) +
+  geom_histogram(mapping = aes(x = price), bins = 50) +
+  scale_x_log10() +
+  geom_vline(xintercept = meanPrice, colour = "pink") +
+  geom_vline(xintercept = medianPrice, colour = "purple") +
+  labs(title = "Distribution of item prices",
+       x = "Price", y = "Number of items")
+print(priceHist)
+```
+
 ### Question 2
 * Join order_items.csv and products.csv, and draw a scatter plot of freight value against product weight (product_weight_g). Describe the relationship.
+```{r}
+itemsProducts = orderItems %>% inner_join(products, by = "product_id")
+cat("NA datas:", sum(is.na(itemsProducts$product_weight_g)))
+```
+```{r, message = FALSE}
+plotData = itemsProducts %>% filter(!is.na(product_weight_g))
+
+freightPoint = ggplot(data = plotData,
+  mapping = aes(x = product_weight_g, y = freight_value)) +
+  geom_point(size = 0.5) +
+  geom_smooth(method = "lm", se = FALSE) +
+  labs(title = "Freight value against product weight",
+       x = "Product weight", y = "Freight value")
+print(freightPoint)
+```
 
 ### Findings.
 
