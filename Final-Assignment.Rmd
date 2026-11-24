@@ -66,6 +66,7 @@ print(priceHist)
 
 ### Question 2
 * Join order_items.csv and products.csv, and draw a scatter plot of freight value against product weight (product_weight_g). Describe the relationship.
+
 ```{r}
 itemsProducts = orderItems %>% inner_join(products, by = "product_id")
 cat("NA datas:", sum(is.na(itemsProducts$product_weight_g)))
@@ -83,6 +84,7 @@ print(freightPoint)
 ```
 
 ### Findings.
+The mean price is higher than the median and this is because some of the expensive items pulled it up. The freight goes up as the weight also goes up, but as we can see the points are mostly spread out, therefore weight is not the only variable that matters.
 
 \newpage
 
