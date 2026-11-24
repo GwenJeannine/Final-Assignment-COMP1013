@@ -157,8 +157,42 @@ I count how often each payment type is used and draw a bar chart of the data. Fo
 ### Question 1
 * Analyse the usage frequency of each payment type (number and percentage of payments), and visualize it with a bar chart.
 
+```{r}
+paymentCount = table(payments$payment_type)
+paymentPercent = paymentCount / length(payments$payment_type) * 100
+print("Number of usage for each payment type:")
+print(sort(paymentCount, decreasing = TRUE))
+print("Percentage of usage for each payment type:")
+print(round(sort(paymentPercent, decreasing = TRUE), 2))
+```
+
+```{r}
+paymentPlot = ggplot(data = payments) +
+  geom_bar(mapping = aes(x = payment_type)) +
+  labs(title = "Number of payments by payment type", x = "Payment type",
+       y = "Number of payments")
+print(paymentPlot)
+```
+
 ### Question 2
 * Compare the payment values of the different payment types with a boxplot. Which payment types are used for larger or smaller amounts?
+
+```{r}
+paymentData = payments %>% filter(payment_type != "not_defined" & payment_value > 0)
+
+valueBox = ggplot(data = paymentData,
+                    mapping = aes(x = payment_type, y = payment_value)) +
+  geom_boxplot() +
+  scale_y_log10() +
+  labs(title = "Payment value by payment type", x = "Payment type",
+       y = "Payment value")
+print(valueBox)
+```
+
+```{r}
+print("Median payment value by type:")
+tapply(paymentData$payment_value, paymentData$payment_type, median)
+```
 
 ### Findings.
 
