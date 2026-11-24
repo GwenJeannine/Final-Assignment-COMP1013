@@ -95,10 +95,58 @@ I use the table() function to count each order of the status and divide it by th
 ### Question 1
 * Count the number of orders in each order status and the percentage of all orders, and visualize this with a bar chart. What percentage of orders were not delivered, that is, orders whose status is anything other than delivered?
 
+```{r}
+statusCount = table(orders$order_status)                       
+statusPercent = statusCount / length(orders$order_status) * 100  
+print("Number of orders for each order status:")
+print(sort(statusCount, decreasing = TRUE))
+print("Percentage for each order status:")
+print(round(sort(statusPercent, decreasing = TRUE), 2))
+```
+```{r}
+notDeliveredPercent = mean(orders$order_status != "delivered") * 100
+cat("Percentage not delivered:", round(notDeliveredPercent, 2), "%") 
+```
+```{r}
+statusBar = ggplot(data = orders) +
+  geom_bar(mapping = aes(x = order_status)) +
+  coord_flip() +
+  labs(title = "Number of orders by status", x = "Order status", y = "Number of orders")
+print(statusBar)
+```
+```{r}
+notDeliveredOrders = orders %>% filter(order_status != "delivered")
+
+notDeliveredBar = ggplot(data = notDeliveredOrders) +
+  geom_bar(mapping = aes(x = order_status)) +
+  coord_flip() +
+  labs(title = "Orders that were not delivered", x = "Order status",
+       y = "Number of orders")
+print(notDeliveredBar)
+```
+
 ### Question 2
 * Join orders.csv and customers.csv, calculate the percentage of orders not delivered in each customer state, and show it in a bar chart.
 
+```{r}
+orderCustomers = orders %>% left_join(customers, by = "customer_id")
+orderCustomers$notDelivered = orderCustomers$order_status != "delivered"
+
+stateData = orderCustomers %>%
+  group_by(customer_state) %>%
+  summarize(nOrders = length(order_id),
+            nNotDelivered = sum(notDelivered),
+            percent = round(nNotDelivered / nOrders * 100, 2))
+stateData
+```
+```{r}
+barplot(stateData$percent, names.arg = stateData$customer_state, col = 4, las = 2,
+        main = paste("Orders not delivered by state"),
+        ylab = "Percentage not delivered")
+```
+
 ### Findings.
+
 
 \newpage
 
