@@ -29,3 +29,44 @@ Signature: _______________________________ Date: ______________
 
 \newpage
 
+# TASK 1
+## Rationale
+
+
+### Question 1
+* Visualize the distribution of item prices in order_items.csv with a histogram, and report the mean and median price.
+
+### Question 2
+* Join order_items.csv and products.csv, and draw a scatter plot of freight value against product weight (product_weight_g). Describe the relationship.
+
+### Findings.
+
+\newpage
+
+# TASK 2
+## Rationale
+
+### Question 1
+* Count the number of orders in each order status and the percentage of all orders, and visualize this with a bar chart. What percentage of orders were not delivered, that is, orders whose status is anything other than delivered?
+
+### Question 2
+* Join orders.csv and customers.csv, calculate the percentage of orders not delivered in each customer state, and show it in a bar chart.
+
+### Findings.
+
+\newpage
+
+# TASK 3
+## Rationale
+
+### Question 1
+* Analyse the usage frequency of each payment type (number and percentage of payments), and visualize it with a bar chart.
+
+### Question 2
+* Compare the payment values of the different payment types with a boxplot. Which payment types are used for larger or smaller amounts?
+
+### Findings.
+
+\newpage
+
+# Appendix: Git repository and commit log
