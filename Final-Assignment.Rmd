@@ -1,30 +1,31 @@
 ---
-title: "Final-Assignment"
-author: "Gwen Jeannine Nathanielle"
-date: "2026-11-24"
-output: pdf_document
+title: "**COMP1013 - Analytic Programming**"
+subtitle: "**Final Assignment -- Surabaya 2026**"
+author: |
+  **Name**: Gwen Jeannine Nathanielle \
+  **Student ID**: 22215062 
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+  word_document: default
 ---
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
+## Declaration
 
-## R Markdown
+By including this statement, I, the author of this work, verify that:
 
-This is an R Markdown document. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see <http://rmarkdown.rstudio.com>.
+-	I hold a copy of this assignment that I can produce if the original is lost or damaged.
 
-When you click the **Knit** button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document. You can embed an R code chunk like this:
+-	I hereby certify that no part of this assignment/product has been copied from any other student’s work or from any other source except where due acknowledgement is made in the assignment.
 
-```{r cars}
-summary(cars)
-```
+-	No part of this assignment/product has been written/produced for me by another person except where such collaboration has been authorised by the subject lecturer/tutor concerned.
 
-## Including Plots
+-	I am aware that this work may be reproduced and submitted to plagiarism detection software programs for the purpose of detecting possible plagiarism (which may retain a copy on its database for future plagiarism checking).
 
-You can also embed plots, for example:
+-	I hereby certify that I have read and understand what the School of Computing, Data Science and Mathematics defines as minor and substantial breaches of misconduct as outlined in the learning guide for this unit.
 
-```{r pressure, echo=FALSE}
-plot(pressure)
-```
+Signature: _______________________________ Date: ______________
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+\newpage
+
