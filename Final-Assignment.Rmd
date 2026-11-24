@@ -31,7 +31,7 @@ Signature: _______________________________ Date: ______________
 
 # TASK 1
 ## Rationale
-
+A few of the prices were a very expensive items therefore I use the log scale for the histogram along with the line of the mean and the median to understand the graph better. I also join the orderItems to products and remove the NA items so that the plot could be drawn without a problem. 
 
 ### Question 1
 * Visualize the distribution of item prices in order_items.csv with a histogram, and report the mean and median price.
@@ -45,6 +45,7 @@ Signature: _______________________________ Date: ______________
 
 # TASK 2
 ## Rationale
+I use the table() function to count each order of the status and divide it by the total to get the percentages. I join the orders and customers with left join so that all orders are listed, then I also calculated the percentage of the not delivered order per state.
 
 ### Question 1
 * Count the number of orders in each order status and the percentage of all orders, and visualize this with a bar chart. What percentage of orders were not delivered, that is, orders whose status is anything other than delivered?
@@ -58,6 +59,7 @@ Signature: _______________________________ Date: ______________
 
 # TASK 3
 ## Rationale
+I count how often each payment type is used and draw a bar chart of the data. For the boxplot, I use log scale because some payments are very large and I also remove the not_defined because they're all zero value payments and zero cannot be shown on a log axis.
 
 ### Question 1
 * Analyse the usage frequency of each payment type (number and percentage of payments), and visualize it with a bar chart.
