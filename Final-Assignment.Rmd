@@ -25,7 +25,7 @@ By including this statement, I, the author of this work, verify that:
 
 -	I hereby certify that I have read and understand what the School of Computing, Data Science and Mathematics defines as minor and substantial breaches of misconduct as outlined in the learning guide for this unit.
 
-Signature: _______________________________ Date: ______________
+Signature: ![Signature](<C:/Users/HP/OneDrive/Dokumen/AnalyticsProgramming/Final Assignment Git/signature.jpg>){width=150px} Date: Wednesday, 25 November 2026
 
 \newpage
 
@@ -202,5 +202,5 @@ Credit card is used very often for about 74% of payments, followed by boleto wit
 # Appendix: Git repository and commit log
 
 ```{r}
-cat("Repository Link: https://github.com/GwenJeannine/Final-Assignment-COMP1013.git")
+cat("Repository Link: https://github.com/GwenJeannine/Final-Assignment-COMP1013")
 ```
