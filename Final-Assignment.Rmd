@@ -53,7 +53,9 @@ meanPrice = mean(orderItems$price)
 medianPrice = median(orderItems$price)
 cat("Mean:", round(meanPrice, 2), " Median:", round(medianPrice, 2))
 ```
+
 ```{r}
+# Histogram on a log10 axis. Pink line = mean, purple line = median.
 priceHist = ggplot(data = orderItems) +
   geom_histogram(mapping = aes(x = price), bins = 50) +
   scale_x_log10() +
@@ -68,10 +70,13 @@ print(priceHist)
 * Join order_items.csv and products.csv, and draw a scatter plot of freight value against product weight (product_weight_g). Describe the relationship.
 
 ```{r}
+# Join items to products
 itemsProducts = orderItems %>% inner_join(products, by = "product_id")
+# items without a weight
 cat("NA datas:", sum(is.na(itemsProducts$product_weight_g)))
 ```
 ```{r, message = FALSE}
+# Keep only the items that have a weight
 plotData = itemsProducts %>% filter(!is.na(product_weight_g))
 
 freightPoint = ggplot(data = plotData,
@@ -115,6 +120,7 @@ statusBar = ggplot(data = orders) +
 print(statusBar)
 ```
 ```{r}
+# Same chart without "delivered", so the other statuses can be compared
 notDeliveredOrders = orders %>% filter(order_status != "delivered")
 
 notDeliveredBar = ggplot(data = notDeliveredOrders) +
@@ -129,7 +135,10 @@ print(notDeliveredBar)
 * Join orders.csv and customers.csv, calculate the percentage of orders not delivered in each customer state, and show it in a bar chart.
 
 ```{r}
+# Join every order to its customer, left join to keep all orders
 orderCustomers = orders %>% left_join(customers, by = "customer_id")
+
+# TRUE counts as 1 and FALSE as 0 when summed up
 orderCustomers$notDelivered = orderCustomers$order_status != "delivered"
 
 stateData = orderCustomers %>%
@@ -178,6 +187,7 @@ print(paymentPlot)
 * Compare the payment values of the different payment types with a boxplot. Which payment types are used for larger or smaller amounts?
 
 ```{r}
+# Remove not_defined and zero-value payments  because it cannot be shown on a log axis
 paymentData = payments %>% filter(payment_type != "not_defined" & payment_value > 0)
 
 valueBox = ggplot(data = paymentData,
